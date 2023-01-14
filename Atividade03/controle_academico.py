@@ -1,5 +1,6 @@
 from functions import *
 escola = list()
+disciplinas = open("disciplinas.txt", 'a')
 while True:
     show()
     while True:
@@ -28,5 +29,34 @@ while True:
     elif opcao == 8:
         listarNotasAlunos(escola)
     elif opcao == 9:
-        break
+        preenchido = True
+        if len(escola) != 0:
+            for disciplina in escola:
+                if len(disciplina[3]) != 0:
+                    if len(disciplina[4]) != 0:
+                        for aluno in disciplina[4]:
+                            if len(aluno[3]) != 0:
+                                preenchido = True
+                            else:
+                                preenchido = False
+                                print("ERRO! Cadastre as notas dos alunos!")
+                                break
+                    else:
+                        preenchido = False
+                        print("ERRO! Cadastre os alunos!")
+                else:
+                    preenchido = False
+                    print("ERRO! Cadastre os professores!")
+                    break
+        else:
+            preenchido = False
+            print("ERRO! Cadastre as disciplinas!")
+
+        if preenchido==True:
+            for disciplina in escola:
+                disciplinas.write(str(disciplina))
+                disciplinas.write("\n")
+            disciplinas.close()
+            break
+
 print(escola)
