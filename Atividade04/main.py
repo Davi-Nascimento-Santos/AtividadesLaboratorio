@@ -2,7 +2,6 @@ from classes import *
 from functions import *
 
 escola = list()
-turma = disciplina()
 def show():
     print("--- Mine Controle Acadêmico ---")
     print("1. Cadastrar disciplina")
@@ -19,10 +18,10 @@ while True:
     show()
     opcao = leitura("I", "Digite uma opção: ")
     if opcao == 1:
-        turma.cadastrarDisciplina()
+        turma = disciplina()
         pertence = False
-        for disciplina in escola:
-            if disciplina.codigo == turma.codigo:
+        for dis in escola:
+            if dis.codigo == turma.codigo:
                 pertence = True
                 break
         if pertence == False:
@@ -30,31 +29,39 @@ while True:
     elif opcao == 2:
         codigo = leitura("I", "Digite o código da disciplina: ")
         pertence = False
-        for disciplina in escola:
-            if disciplina.codigo == codigo:
-                disciplina.show()
+        for dis in escola:
+            if dis.codigo == codigo:
+                dis.show()
                 pertence = True
                 break
         if pertence == False:
             print("ERRO! Disciplina não encontrada!")
 
     elif opcao == 3:
-        for disciplina in escola:
-            disciplina.show()
+        for dis in escola:
+            dis.show()
     elif opcao == 4:
         codigo = leitura("I", "Digite o código da disciplina: ")
-        for disciplina in escola:
-            if codigo == disciplina.codigo:
-                disciplina.cadastrarProfessor()
+        for dis in escola:
+            if codigo == dis.codigo:
+                dis.cadastrarProfessor()
                 break
     elif opcao == 5:
         codigo = leitura("I", "Digite o código da disciplina: ")
-        for disciplina in escola:
-            if codigo == disciplina.codigo:
-                disciplina.cadastrarAluno()
+        for dis in escola:
+            if codigo == dis.codigo:
+                dis.cadastrarAluno()
                 break
     elif opcao == 6:
-        print()
+        codigo = leitura("I", "Digite o código da disciplina: ")
+        for dis in escola:
+            if dis.codigo == codigo:
+                codAluno = leitura("I", "Digite o código do aluno: ")
+                for alu in dis.alunos:
+                    if alu.matricula == codAluno:
+                        for c in range(3):
+                            nota = leitura("F", f"Digite a {c+1}º nota: ")
+                            alu.notas.append(nota)
     elif opcao == 7:
         print()
     elif opcao == 8:

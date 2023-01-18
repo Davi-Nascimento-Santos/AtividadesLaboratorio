@@ -10,29 +10,22 @@ class professor():
 
 
 class aluno():
-    nome = None
-    matricula = None
-    curso = None
 
     def __init__(self):
         self.matricula = leitura("I", "Digite a matricula do aluno: ")
         self.nome = leitura("S", "Digite o nome do aluno: ")
         self.curso = leitura("S", "Digite o curso do aluno: ")
+        self.notas = []
 
 
 class disciplina():
-    codigo = None
-    nome = None
-    semestre = None
-    professores = []
-    alunos = []
-    cargaHoraria = None
-    diasHorarios = []
-
-    def cadastrarDisciplina(self):
+    def __init__(self):
         self.codigo = leitura("I", "Digite o código da disciplina: ")
         self.nome = leitura("S", "Digite o nome da disciplina: ")
         self.semestre = leitura("F", "Digite o semestre da disciplina: ")
+        self.professores = []
+        self.alunos = []
+        self.diasHorarios = []
         self.cargaHoraria = leitura("I", "Digite a carga horária: ")
         quant = leitura("I", "Digite a quantidade de dias: ")
         dias = []
@@ -76,4 +69,4 @@ class disciplina():
             print(f"Matrícula: {c.matricula}, Nome: {c.nome}, Curso: {c.curso}")
         print(f"Dias: {self.diasHorarios[0]}")
         print(f"Horário: {self.diasHorarios[1]}")
-
+        
