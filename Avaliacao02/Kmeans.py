@@ -1,5 +1,5 @@
 from math import *
-from random import randint
+from random import *
 
 class Kmeans:
     def __init__(self, n_clusters):
@@ -100,63 +100,18 @@ class Kmeans:
     #Get clusters
     def getClusters(self):
         return self.clusters
-
-x = [[1, 4], [2, 6], [1, 9], [2, 8], [3, 4]]
-teste =  Kmeans(2)
-teste.separador(x)
-print(teste.getCentroides())
-print(teste.getClusters())
-teste.newCentroides()
-print(teste.getCentroides())
-print(teste.getClusters())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""from sklearn.cluster import KMeans
-import numpy as np
-
-# Cria um array com os pontos de dados
-X = np.array([[1, 2, 3], [1, 4, 5], [1, 0, 0], [4, 2, 1], [4, 4, 6], [4, 0, 4]])
-
-# Cria um objeto KMeans com dois clusters
-kmeans = KMeans(n_clusters=2)
-
-# Aplica o algoritmo KMeans ao conjunto de dados
-kmeans.fit(X)
-
-# Obtém os centróides dos clusters
-centroids = kmeans.cluster_centers_
-
-# Obtém as etiquetas de cluster para cada ponto de dados
-labels = kmeans.labels_
-
-# Imprime os centróides e as etiquetas
-print("Centroids:\n", centroids)
-print("Labels:\n", labels)"""
+    
+    #Retorna os clusters
+    def retornaClusters(self):
+        all = []
+        for i in range(0, len(self.clusters)):
+            clus = []
+            x = []
+            y = []
+            for j in self.clusters[i]:
+                x.append(j[0])
+                y.append(j[1])
+            clus.append(x)
+            clus.append(y)
+            all.append(clus)
+        return all
